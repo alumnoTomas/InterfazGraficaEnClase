@@ -6,8 +6,8 @@ import javax.swing.JOptionPane;
 public class Ventana2 extends javax.swing.JFrame {
 
     private PanelAlta panelAlta;
-   private PanelConsulta panelConsulta;
-   private Empresa empresa;
+    private PanelConsulta panelConsulta;
+    private Empresa empresa;
 
     public Ventana2() {
         initComponents();
@@ -16,7 +16,7 @@ public class Ventana2 extends javax.swing.JFrame {
     public Ventana2(String nomUsuario, Empresa empresa) {
         initComponents();
         this.setTitle(nomUsuario);
-        this.empresa=empresa;
+        this.empresa = empresa;
     }
 
     /**
@@ -108,26 +108,29 @@ public class Ventana2 extends javax.swing.JFrame {
 
     private void mnuConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuConsultaActionPerformed
         eliminarPaneles();
-        panelConsulta=new PanelConsulta();
+        panelConsulta = new PanelConsulta(empresa);
         getContentPane().add(panelConsulta);
         pack();
     }//GEN-LAST:event_mnuConsultaActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        int opcion=JOptionPane.showConfirmDialog(this, "¿Realmente quiere salir?");
-        if(opcion==JOptionPane.OK_OPTION){
+        int opcion = JOptionPane.showConfirmDialog(this, "¿Realmente quiere salir?");
+        if (opcion == JOptionPane.OK_OPTION) {
             dispose();
             System.exit(0);
-        }else{}
+        } else {
+        }
     }//GEN-LAST:event_formWindowClosing
-    private void eliminarPaneles(){
-        try{
-          this.remove(panelAlta);  
-        }catch (Exception ex){}
-        try{
-          this.remove(panelConsulta);  
-        }catch (Exception ex){}
-       
+    private void eliminarPaneles() {
+        try {
+            this.remove(panelAlta);
+        } catch (Exception ex) {
+        }
+        try {
+            this.remove(panelConsulta);
+        } catch (Exception ex) {
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

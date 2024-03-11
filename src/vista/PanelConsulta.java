@@ -1,12 +1,31 @@
-
 package vista;
 
+import controlador.Empresa;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 public class PanelConsulta extends javax.swing.JPanel {
 
-   
-    public PanelConsulta() {
+    DefaultComboBoxModel modelo;
+    Empresa miEmpresa;
+
+    public PanelConsulta(Empresa miEmpresa) {
+        this.miEmpresa=miEmpresa;
+        
+        modelo = new DefaultComboBoxModel();
+        modelo.addAll(miEmpresa.getUsuarios());
         initComponents();
+        //inicializar();
+        cmbTipo.setModel(modelo);
+    }
+
+    public void inicializar() {
+        ArrayList<String> datos = new ArrayList<>();
+        datos.add("Usuario");
+        datos.add("Administrador");
+        datos.add("Otros");
+        modelo.addAll(datos);
     }
 
     /**
@@ -25,7 +44,6 @@ public class PanelConsulta extends javax.swing.JPanel {
 
         jLabel1.setText("Tipo");
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Administrador" }));
         cmbTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTipoActionPerformed(evt);
@@ -75,7 +93,9 @@ public class PanelConsulta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
-        // TODO add your handling code here:
+        int posicion = cmbTipo.getSelectedIndex();
+        String info=(String)modelo.getElementAt(posicion);
+        JOptionPane.showMessageDialog(this, info);
     }//GEN-LAST:event_cmbTipoActionPerformed
 
 
